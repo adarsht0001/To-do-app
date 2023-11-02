@@ -1,5 +1,5 @@
 {
-  "name": "To-do app",
+  "name": "To-do-app",
   "version": "1.0.50",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -7,11 +7,12 @@
     "dev": "bun run --hot src/index.ts"
   },
   "dependencies": {
-    "elysia": "latest",
-    "prisma": "^5.3.1"
+    "@prisma/client": "^5.5.2",
+    "elysia": "latest"
   },
   "devDependencies": {
-    "bun-types": "latest"
+    "bun-types": "latest",
+    "prisma": "^5.3.1"
   },
   "module": "src/index.js"
 }

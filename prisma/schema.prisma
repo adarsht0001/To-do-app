@@ -2,10 +2,26 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
-  provider = "prisma-client-js"
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "debian-openssl-3.0.x"]
 }
 
 datasource db {
   provider = "mongodb"
   url      = env("DATABASE_URL")
+}
+model User {
+  id         String  @id @default(auto()) @map("_id") @db.ObjectId
+  name       String
+  password   String
+  tasks      Tasks[]
+}
+
+model Tasks{
+  id String  @id @default(auto()) @map("_id") @db.ObjectId
+  Task User @relation(fields: [userId], references: [id])
+  userId String @db.ObjectId
+  Details String
+  startTime DateTime
+  endTime DateTime
 }
