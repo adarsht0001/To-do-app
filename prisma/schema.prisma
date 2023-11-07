@@ -10,7 +10,7 @@ datasource db {
   provider = "mongodb"
   url      = env("DATABASE_URL")
 }
-model User {
+model user {
   id         String  @id @default(auto()) @map("_id") @db.ObjectId
   name       String
   password   String
@@ -19,7 +19,7 @@ model User {
 
 model Tasks{
   id String  @id @default(auto()) @map("_id") @db.ObjectId
-  Task User @relation(fields: [userId], references: [id])
+  Task user @relation(fields: [userId], references: [id])
   userId String @db.ObjectId
   Details String
   startTime DateTime

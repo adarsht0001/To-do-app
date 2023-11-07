@@ -14,6 +14,13 @@ app.post("/", ({ body, set }) => {
 
 app.listen(3000);
 
+// await prisma.user.create({
+//     data: {
+//         name: "adarsh",
+//         password: "123",
+//     },
+// });
+
 console.log(
     `🦊 Elysia is running at ${app.server?.hostname}:${app.server?.port}`
 );
