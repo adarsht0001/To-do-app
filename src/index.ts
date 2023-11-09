@@ -1,22 +1,29 @@
 import { Elysia } from "elysia";
 import { PrismaClient } from "@prisma/client";
+import auth from "./auth";
 
 const app = new Elysia();
 
 const prisma = new PrismaClient();
 
-app.get("/", () => "Hello Elysia");
+// app.derive(({ request: { headers } }) => {
+//     return {
+//         authorization: headers.get("Authorization"),
+//     };
+// }).post("/", ({ authorization, body, store, set }) => {
+//     console.log("23", authorization);
 
-app.post("/", ({ body, set }) => {
-    console.log(body);
-    return "invalid";
-});
+//     console.log(body);
+//     set.status = 400;
+//     return "invalid";
+// });
+app.group("/v1", (app) => app.get("/", () => "Using v1").use(auth));
 
 app.listen(3000);
 
 // await prisma.user.create({
 //     data: {
-//         name: "adarsh",
+//         name: "Adarsh",
 //         password: "123",
 //     },
 // });
